@@ -11,7 +11,7 @@ RUN apk --no-cache add unzip \
     && mkdir -p /hath \
     && cd /hath \
     && wget https://repo.e-hentai.org/hath/HentaiAtHome_$HatH_VERSION.zip -O hath.zip \
-    && echo -n ""$HatH_SHA256" hath.zip" | sha256sum -c \
+    && echo -n ""$HatH_SHA256"  hath.zip" | sha256sum -c \
     && unzip hath.zip \
     && rm hath.zip \
     && mkdir -p /hath/data \
