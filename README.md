@@ -2,10 +2,10 @@
 
 ## Tags
 
-`arm`: For arm32v6 arm32v7
-`arm64`: For arm64v8
-`x64/latest`: For x64(Linux)
-`i386`: For x32(Linux)
+`arm`: For arm32v6 arm32v7  
+`arm64`: For arm64v8  
+`x64/latest`: For x64(Linux)  
+`i386`: For x32(Linux)  
 
 I can't offer image for windows due to the limitation of the DockerHub's Autobuild system.
 
