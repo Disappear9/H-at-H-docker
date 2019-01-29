@@ -1,0 +1,36 @@
+FROM alpine AS builder
+
+ENV HatH_VERSION 1.4.2
+ENV HatH_SHA256 da25fdec0a9535b265677a230e5cf84c75f0cfe790cffc51a520cf7cf3b01b2f
+
+RUN apk --no-cache add curl unzip \
+    && curl -fsSL https://github.com/Disappear9/H-at-H-docker/archive/master.zip -o master.zip \
+    && unzip master.zip \
+    && mkdir -p /builder \
+    && cp -R H-at-H-docker-master/build/* /builder \
+    && mkdir -p /hath \
+    && cd /hath \
+    && curl -fsSL https://repo.e-hentai.org/hath/HentaiAtHome_$HatH_VERSION.zip -o hath.zip \
+    && echo -n ""$HatH_SHA256" hath.zip" | sha256sum -c \
+    && unzip hath.zip \
+    && rm hath.zip \
+    && mkdir -p /hath/data \
+    && mkdir -p /hath/download
+
+FROM openjdk:8-jre-alpine AS release
+
+ENV HatH_PORT 11112
+ENV HatH_ARGS --cache-dir=/hath/data/cache --data-dir=/hath/data/data --download-dir=/hath/download --log-dir=/hath/data/log --temp-dir=/hath/data/temp
+
+EXPOSE "$HatH_PORT"
+
+COPY --from=builder /hath /hath
+COPY --from=builder /builder/start.sh /hath/start.sh
+WORKDIR /hath
+
+RUN apk --no-cache add sqlite \
+    && chmod +x /hath/start.sh
+
+CMD ["/hath/start.sh"]
+
+
