@@ -5,4 +5,5 @@ if [ ! -f /hath/data/client_login ]; then
 	fi
 fi
 
-java -jar HentaiAtHome.jar $HatH_ARGS --port=$HatH_PORT
+java -jar HentaiAtHome.jar $HatH_ARGS 
+

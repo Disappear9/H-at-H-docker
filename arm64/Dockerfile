@@ -21,10 +21,7 @@ FROM arm64v8/openjdk:8-jre-alpine AS release
 
 COPY --from=builder /builder/qemu/qemu-aarch64-static /usr/bin
 
-ENV HatH_PORT 11112
 ENV HatH_ARGS --cache-dir=/hath/data/cache --data-dir=/hath/data/data --download-dir=/hath/download --log-dir=/hath/data/log --temp-dir=/hath/data/temp
-
-EXPOSE "$HatH_PORT"
 
 COPY --from=builder /hath /hath
 COPY --from=builder /builder/start.sh /hath/start.sh

@@ -11,7 +11,15 @@ I can't offer image for windows due to the limitation of the DockerHub's Autobui
 
 ## Install
 
-Replace `/DOWNLOAD_DIR` and `YOUR_CLIENT_KEY` with yours.
+Replace `/DOWNLOAD_DIR` `YOUR_CLIENT_KEY` `YOUR_PORT` with yours.
+
+### The format of `YOUR_CLIENT_KEY`
+
+`"$Client ID"-"$Client Key"` like this: `000000-ABCDEFGHIJKLMN1234OP`
+
+### About `YOUR_PORT`
+
+https://ehwiki.org/wiki/Technical_Issues#Ports 
 
 ## Run command below:
 	#Pull image
@@ -21,5 +29,5 @@ Replace `/DOWNLOAD_DIR` and `YOUR_CLIENT_KEY` with yours.
 	sudo docker volume create h_at_h_data
 	
 	#Run it
-	sudo docker run -d --name h_at_h -p 11112:11112 -v h_at_h_data:/hath/data -v /DOWNLOAD_DIR:/hath/download -e HatH_KEY=YOUR_CLIENT_KEY Disappear9/hentaiathome
+	sudo docker run -d --name h_at_h -p YOUR_PORT:YOUR_PORT -v h_at_h_data:/hath/data -v /DOWNLOAD_DIR:/hath/download -e HatH_KEY=YOUR_CLIENT_KEY Disappear9/hentaiathome
 
