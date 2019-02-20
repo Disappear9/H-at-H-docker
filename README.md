@@ -9,7 +9,7 @@
 
 I can't offer image for windows due to the limitation of the DockerHub's Autobuild system.
 
-## Install
+## Deploy
 
 Replace `/DOWNLOAD_DIR` `YOUR_CLIENT_KEY` `YOUR_PORT` with yours.
 
@@ -29,5 +29,6 @@ https://ehwiki.org/wiki/Technical_Issues#Ports
 	sudo docker volume create h_at_h_data
 	
 	#Run it
-	sudo docker run -d --name h_at_h -p YOUR_PORT:YOUR_PORT -v h_at_h_data:/hath/data -v /DOWNLOAD_DIR:/hath/download -e HatH_KEY=YOUR_CLIENT_KEY Disappear9/hentaiathome
+	sudo docker run -d --name h_at_h -p YOUR_PORT:YOUR_PORT -v h_at_h_data:/hath/data -v /DOWNLOAD_DIR:/hath/download -e HatH_KEY=YOUR_CLIENT_KEY disappear9/hentaiathome
+
 
