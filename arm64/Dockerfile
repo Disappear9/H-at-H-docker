@@ -1,7 +1,7 @@
 FROM alpine AS builder
 
-ENV HatH_VERSION 1.5.4
-ENV HatH_SHA256 9823a5e45c37a6c94e41f9e2b78e7735c6693a72377ba44cb3524dce463f1c67
+ENV HatH_VERSION 1.6.0
+ENV HatH_SHA256 597f0ae2d114a86e021013b0146d59b1f2f8be2025bfae6b38c181515b795018
 
 RUN apk --no-cache add unzip \
     && wget https://github.com/Disappear9/H-at-H-docker/archive/master.zip \
