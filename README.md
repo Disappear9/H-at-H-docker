@@ -23,7 +23,7 @@ https://ehwiki.org/wiki/Technical_Issues#Ports
 
 ## Run command below:
 	#Pull image
-	sudo docker pull disappear9/hentaiathome
+	sudo docker pull btdwv/hentaiathome
 
 	#Create volume for caches and logs
 	sudo docker volume create h_at_h_data
