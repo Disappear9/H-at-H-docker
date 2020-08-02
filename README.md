@@ -48,3 +48,9 @@ https://ehwiki.org/wiki/Technical_Issues#Ports
 	sudo docker run -d --name h_at_h -p YOUR_PORT:YOUR_PORT -v h_at_h_data:/hath/data -v /DOWNLOAD_DIR:/hath/download disappear9/hentaiathome
 	
 
+## For Unraid user:
+Add this to `Template repositories`: `https://github.com/Disappear9/dockerfile-other`
+
+### About `Port:`
+	(Container Port) and (Host Port) should be identical, 
+	or you could just switch to (Advanced View), and set (Network Type) to (Host).
