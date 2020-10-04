@@ -1,6 +1,11 @@
 #!/bin/sh
 
-trap 'killall java' INT TERM KILL
+kill_jar() {
+  echo 'Received TERM'
+  kill "$(ps -ef | grep java | grep app | awk '{print $1}')"
+  echo 'Process finished'
+}
+
 if [ $HatH_KEY ]
 	then
 		echo -n "${HatH_KEY}" > /hath/data/data/client_login
@@ -11,4 +16,7 @@ if [ $HatH_KEY ]
 		fi
 fi
 
-java -jar HentaiAtHome.jar $HatH_ARGS
+trap 'kill_jar' TERM INT KILL
+java -jar HentaiAtHome.jar $HatH_ARGS  &
+
+wait $!
