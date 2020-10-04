@@ -46,6 +46,9 @@ https://ehwiki.org/wiki/Technical_Issues#Ports
 	
 	#Run it
 	sudo docker run -d --name h_at_h -p YOUR_PORT:YOUR_PORT -v h_at_h_data:/hath/data -v /DOWNLOAD_DIR:/hath/download disappear9/hentaiathome
+	Or
+	sudo docker run -d --name h_at_h --net host -v h_at_h_data:/hath/data -v /DOWNLOAD_DIR:/hath/download disappear9/hentaiathome
+	If you want to change port in the future.
 	
 
 ## For Unraid user:
