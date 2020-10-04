@@ -1,5 +1,6 @@
 #!/bin/sh
 
+trap 'killall java' INT TERM KILL
 if [ $HatH_KEY ]
 	then
 		echo -n "${HatH_KEY}" > /hath/data/data/client_login
@@ -11,6 +12,3 @@ if [ $HatH_KEY ]
 fi
 
 java -jar HentaiAtHome.jar $HatH_ARGS
-
-trap 'killall java' INT TERM EXIT;
-wait
