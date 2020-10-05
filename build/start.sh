@@ -2,7 +2,7 @@
 
 kill_jar() {
   echo 'Received TERM'
-  kill "$(ps -ef | grep java | grep app | awk '{print $1}')"
+  killall java
   echo 'Process finished'
 }
 
