@@ -1,5 +1,7 @@
 # Hentai@Home on Docker
 
+## 2021/06/09 DockerHUB has [stopped free plan from using Autobuild feature](https://www.docker.com/blog/changes-to-docker-hub-autobuilds), until i found other ways to update image, there will not have any update.
+
 ## Tags
 
 `arm`: For arm32v6 arm32v7  
