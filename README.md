@@ -1,15 +1,11 @@
 # Hentai@Home on Docker
 
-## 2021/06/09 DockerHUB has [stopped free plan from using Autobuild feature](https://www.docker.com/blog/changes-to-docker-hub-autobuilds), until i found other ways to update image, there will not have any update.
+## Support platforms:
 
-## Tags
-
-`arm`: For arm32v6 arm32v7  
-`arm64`: For arm64v8  
-`x64/latest`: For x64(Linux)  
-`i386`: For x32(Linux)  
-
-I can't offer image for windows due to the limitation of the DockerHub's Autobuild system.
+	linux/amd64
+	linux/386
+	linux/arm64
+	linux/arm
 
 ## Deploy
 
@@ -59,3 +55,8 @@ Add this to `Template repositories`: `https://github.com/Disappear9/dockerfile-o
 ### About `Port:`
 	(Container Port) and (Host Port) should be identical, 
 	or you could just switch to (Advanced View), and set (Network Type) to (Host).
+
+## Changelog
+2020/10/06 Graceful shutdown  
+2021/06/09 DockerHUB has stopped free plan from using Autobuild feature, until i found other ways to update image, there will not have any update.  
+2021/07/01 Now using Github action to build image.  
