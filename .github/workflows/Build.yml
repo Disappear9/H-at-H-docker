@@ -33,4 +33,6 @@ jobs:
         with:
           platforms: linux/amd64,linux/386,linux/arm64,linux/arm/v7
           push: true
-          tags: disappear9/hentaiathome:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/hentaiathome:latest
+          cache-from: type=gha,scope=${{ github.workflow }}
+          cache-to: type=gha,mode=max,scope=${{ github.workflow }}
