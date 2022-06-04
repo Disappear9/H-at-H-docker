@@ -22,7 +22,7 @@ WORKDIR /hath
 
 RUN apt-get update \
     && apt-get install -y sqlite \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
     && chmod +x /hath/start.sh
 
 CMD ["/hath/start.sh"]
