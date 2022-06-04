@@ -3,9 +3,15 @@
 ## Support platforms:
 
 	linux/amd64
-	linux/386
 	linux/arm64
 	linux/arm
+	linux/ppc64le
+	linux/386
+	
+### For i386/x32:
+Eclipse temurin don't have images for i386/x32 , i use ibmjava instead.  
+So use tag `disappear9/hentaiathome:i386`  
+
 
 ## Deploy
 
@@ -60,3 +66,4 @@ Add this to `Template repositories`: `https://github.com/Disappear9/dockerfile-o
 2020/10/06 Graceful shutdown  
 2021/06/09 DockerHUB has stopped free plan from using Autobuild feature, until i found other ways to update image, there will not have any update.  
 2021/07/01 Now using Github action to build image.  
+2022/06/04 Use Eclipse temurin images.
