@@ -20,7 +20,9 @@ COPY --from=builder /hath /hath
 COPY build/start.sh /hath/start.sh
 WORKDIR /hath
 
-RUN apk --no-cache add sqlite \
+RUN apt-get update \
+    && apt-get install -y sqlite \
+    && rm -rf /var/lib/apt/lists/* \
     && chmod +x /hath/start.sh
 
 CMD ["/hath/start.sh"]
