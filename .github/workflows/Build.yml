@@ -44,5 +44,5 @@ jobs:
           push: true
           file: Dockerfile_i386
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/hentaiathome:i386
-          cache-from: type=gha,scope=${{ github.workflow }}
-          cache-to: type=gha,mode=max,scope=${{ github.workflow }}
+          cache-from: type=gha,scope=i386
+          cache-to: type=gha,mode=max,scope=i386
