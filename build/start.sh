@@ -2,7 +2,7 @@
 
 kill_jar() {
   echo 'Received TERM'
-  killall java
+  pkill java
   wait "$(ps -ef | pgrep java)"
   echo 'Process finished'
 }
