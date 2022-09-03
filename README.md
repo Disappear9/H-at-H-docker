@@ -56,7 +56,8 @@ https://ehwiki.org/wiki/Technical_Issues#Ports
 	
 
 ## For Unraid user:
-Add this to `Template repositories`: `https://github.com/Disappear9/dockerfile-other`
+<del> Add this to `Template repositories`: `https://github.com/Disappear9/dockerfile-other` </del>  
+Okay? unraid [removed Template Repositories](https://forums.unraid.net/topic/112170-allow-template-repositories-to-be-hosted-from-other-sources/#comment-1021630)😅
 
 ### About `Port:`
 	(Container Port) and (Host Port) should be identical, 
