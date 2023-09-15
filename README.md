@@ -53,12 +53,8 @@ https://ehwiki.org/wiki/Technical_Issues#Ports
 	Or
 	sudo docker run -d --name h_at_h --net host -v h_at_h_data:/hath/data -v /DOWNLOAD_DIR:/hath/download ghcr.io/disappear9/hentaiathome
 	If you want to change port in the future.
-	
 
-## For Unraid user:
-<del> Add this to `Template repositories`: `https://github.com/Disappear9/dockerfile-other` </del>  
-Okay? unraid [removed Template Repositories](https://forums.unraid.net/topic/112170-allow-template-repositories-to-be-hosted-from-other-sources/#comment-1021630)😅  
-
+ 
 ## Using docker-compose:  
 	version: '3'
 	
@@ -76,12 +72,15 @@ Okay? unraid [removed Template Repositories](https://forums.unraid.net/topic/112
 	
 	volumes:
 	  h_at_h_data:
-  
+
+## For Unraid user:
+<del> Add this to `Template repositories`: `https://github.com/Disappear9/dockerfile-other` </del>  
+Okay? unraid [removed Template Repositories](https://forums.unraid.net/topic/112170-allow-template-repositories-to-be-hosted-from-other-sources/#comment-1021630)😅  
 
 ### About `Port:`
 	(Container Port) and (Host Port) should be identical, 
 	or you could just switch to (Advanced View), and set (Network Type) to (Host).
-
+ 
 ## Changelog
 2020/10/06 Graceful shutdown  
 2021/06/09 DockerHUB has stopped free plan from using Autobuild feature, until i found other ways to update image, there will not have any update.  
