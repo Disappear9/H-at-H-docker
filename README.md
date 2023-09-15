@@ -57,7 +57,26 @@ https://ehwiki.org/wiki/Technical_Issues#Ports
 
 ## For Unraid user:
 <del> Add this to `Template repositories`: `https://github.com/Disappear9/dockerfile-other` </del>  
-Okay? unraid [removed Template Repositories](https://forums.unraid.net/topic/112170-allow-template-repositories-to-be-hosted-from-other-sources/#comment-1021630)😅
+Okay? unraid [removed Template Repositories](https://forums.unraid.net/topic/112170-allow-template-repositories-to-be-hosted-from-other-sources/#comment-1021630)😅  
+
+## Using docker-compose:  
+	version: '3'
+	
+	services:
+	  h_at_h:
+	    image: ghcr.io/disappear9/hentaiathome:latest
+	    volumes:
+	      - h_at_h_data:/hath/data
+	      - /LOCAL_DOWNLOAD_FOLDER:/hath/download
+	    ports:
+	      - YOUR_PORT:YOUR_PORT
+	    restart: unless-stopped
+	    environment:
+	      - HatH_KEY=YOUR_CLIENT_ID-YOUR_CLIENT_KEY
+	
+	volumes:
+	  h_at_h_data:
+  
 
 ### About `Port:`
 	(Container Port) and (Host Port) should be identical, 
@@ -69,3 +88,5 @@ Okay? unraid [removed Template Repositories](https://forums.unraid.net/topic/112
 2021/07/01 Now using Github action to build image.  
 2022/06/04 Use Eclipse temurin images.  
 2023/01/10 My DockerHub account got deleted for no reason, move image to ghcr.io  
+2023/09/16 Update to 1.6.2 & Add docker-compose to documentation
+
