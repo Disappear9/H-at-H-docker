@@ -1,7 +1,7 @@
 FROM alpine AS builder
 
-ENV HatH_VERSION 1.6.2
-ENV HatH_SHA256 bb21adeb38e48aeb1892b5cbe603bfeea2c1d653c3d9fafc9e1b336ec0d32dda
+ENV HatH_VERSION 1.6.3
+ENV HatH_SHA256 55c4360fc3d635e86e08e87aebcda97aecbda3102279d41d753e7452da7c958f
 
 RUN apk --no-cache add unzip \
     && mkdir -p /hath \
