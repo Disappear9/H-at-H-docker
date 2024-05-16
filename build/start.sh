@@ -17,7 +17,14 @@ if [ $HatH_KEY ]
 		fi
 fi
 
-trap 'kill_jar' TERM INT KILL
-java -jar HentaiAtHome.jar $HatH_ARGS  &
-
-wait $!
+if [ $ImageProxyHost ] && [ $ImageProxyType ] && [ $ImageProxyPort ]
+	then
+ 		echo "Proxy arguments found! "
+   		trap 'kill_jar' TERM INT KILL
+		java -jar HentaiAtHome.jar $HatH_ARGS  --image-proxy-host=$ImageProxyHost --image-proxy-type=$ImageProxyType --image-proxy-port=$ImageProxyPort &
+  		wait $!
+  	else
+   		trap 'kill_jar' TERM INT KILL
+		java -jar HentaiAtHome.jar $HatH_ARGS  &
+  		wait $!
+fi
