@@ -25,6 +25,26 @@ Replace `/DOWNLOAD_DIR` `YOUR_CLIENT_KEY` `YOUR_PORT` with yours.
 
 https://ehwiki.org/wiki/Technical_Issues#Ports 
 
+### Proxy (>=1.6.3)
+
+Add these environment variables:  
+```
+ImageProxyHost
+ImageProxyType
+ImageProxyPort
+```
+
+quote: https://forums.e-hentai.org/index.php?showtopic=234458
+```
+--image-proxy-host=<host> - hostname or IP address for the proxy
+--image-proxy-type=<type> - can be "socks" or "http". defaults to "socks" if not provided
+--image-proxy-port=<port> - the port of the proxy. defaults to 1080 for SOCKS and 8080 for HTTP if not provided
+
+It does not support proxies that require authentication.
+
+While it will technically work to use Tor as a SOCKS proxy, this should be avoided as Tor is too slow for this purpose.
+```
+
 ## Run command below:
 	#Pull image
 	sudo docker pull ghcr.io/disappear9/hentaiathome:latest
@@ -50,6 +70,7 @@ https://ehwiki.org/wiki/Technical_Issues#Ports
 	
 	#Run it
 	sudo docker run -d --name h_at_h -p YOUR_PORT:YOUR_PORT -v h_at_h_data:/hath/data -v /DOWNLOAD_DIR:/hath/download ghcr.io/disappear9/hentaiathome
+ 
 	Or
 	sudo docker run -d --name h_at_h --net host -v h_at_h_data:/hath/data -v /DOWNLOAD_DIR:/hath/download ghcr.io/disappear9/hentaiathome
 	If you want to change port in the future.
@@ -87,5 +108,5 @@ Okay? unraid [removed Template Repositories](https://forums.unraid.net/topic/112
 2021/07/01 Now using Github action to build image.  
 2022/06/04 Use Eclipse temurin images.  
 2023/01/10 My DockerHub account got deleted for no reason, move image to ghcr.io  
-2023/09/16 Update to 1.6.2 & Add docker-compose to documentation
-
+2023/09/16 Update to 1.6.2 & Add docker-compose to documentation  
+2024/05/16 Update to 1.6.3 & Add proxy support  
