@@ -40,3 +40,6 @@ jobs:
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE }}:i386
           cache-from: type=gha,scope=i386
           cache-to: type=gha,mode=max,scope=i386
+          annotations: |
+            "org.opencontainers.image.source": "https://github.com/Disappear9/H-at-H-docker"
+            "org.opencontainers.image.description": "Dockerfile of Hentai@Home (arm,x64,x86)"
