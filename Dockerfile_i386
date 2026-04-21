@@ -1,7 +1,7 @@
 FROM alpine AS builder
 
-ENV HatH_VERSION 1.6.5
-ENV HatH_SHA256 a42224c24008dbf895e2d178b1fa25589715788214f7ed526d1957217aaa912e
+ENV HatH_VERSION=1.6.5
+ENV HatH_SHA256=a42224c24008dbf895e2d178b1fa25589715788214f7ed526d1957217aaa912e
 
 RUN apk --no-cache add unzip \
     && mkdir -p /hath \
@@ -18,7 +18,7 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends wget ca-certificates sqlite3 \
     && rm -rf /var/lib/apt/lists/*
 
-ENV JAVA_VERSION 8.0.8.60
+ENV JAVA_VERSION=8.0.8.60
 
 RUN set -eux; \
     ARCH="$(dpkg --print-architecture)"; \
@@ -46,7 +46,12 @@ ENV JAVA_HOME=/opt/ibm/java/jre \
     PATH=/opt/ibm/java/jre/bin:$PATH \
     IBM_JAVA_OPTIONS="-XX:+UseContainerSupport"
 
-ENV HatH_ARGS --cache-dir=/hath/data/cache --data-dir=/hath/data/data --download-dir=/hath/download --log-dir=/hath/data/log --temp-dir=/hath/data/temp
+ENV HatH_ARGS="\
+    --cache-dir=/hath/data/cache \
+    --data-dir=/hath/data/data \
+    --download-dir=/hath/download \
+    --log-dir=/hath/data/log \
+    --temp-dir=/hath/data/temp"
 
 COPY --from=builder /hath /hath
 COPY build/start.sh /hath/start.sh
