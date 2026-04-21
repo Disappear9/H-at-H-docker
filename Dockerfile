@@ -1,7 +1,7 @@
 FROM alpine AS builder
 
-ENV HatH_VERSION 1.6.4
-ENV HatH_SHA256 25351e4b43169f0bad25abcfe7f61034f03cca08b69f219727713975dc5b03b1
+ENV HatH_VERSION 1.6.5
+ENV HatH_SHA256 a42224c24008dbf895e2d178b1fa25589715788214f7ed526d1957217aaa912e
 
 RUN apk --no-cache add unzip \
     && mkdir -p /hath \
@@ -12,7 +12,7 @@ RUN apk --no-cache add unzip \
     && mkdir -p /hath/data \
     && mkdir -p /hath/download
 
-FROM eclipse-temurin:8-jre-focal AS release
+FROM eclipse-temurin:8-jre-noble AS release
 
 ENV HatH_ARGS --cache-dir=/hath/data/cache --data-dir=/hath/data/data --download-dir=/hath/download --log-dir=/hath/data/log --temp-dir=/hath/data/temp
 

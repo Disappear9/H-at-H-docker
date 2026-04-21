@@ -1,7 +1,7 @@
 FROM alpine AS builder
 
-ENV HatH_VERSION 1.6.4
-ENV HatH_SHA256 25351e4b43169f0bad25abcfe7f61034f03cca08b69f219727713975dc5b03b1
+ENV HatH_VERSION 1.6.5
+ENV HatH_SHA256 a42224c24008dbf895e2d178b1fa25589715788214f7ed526d1957217aaa912e
 
 RUN apk --no-cache add unzip \
     && mkdir -p /hath \
@@ -12,7 +12,39 @@ RUN apk --no-cache add unzip \
     && mkdir -p /hath/data \
     && mkdir -p /hath/download
 
-FROM i386/ibmjava:jre AS release
+FROM debian:12 AS release
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends wget ca-certificates sqlite\
+    && rm -rf /var/lib/apt/lists/*
+
+ENV JAVA_VERSION 8.0.8.60
+
+RUN set -eux; \
+    ARCH="$(dpkg --print-architecture)"; \
+    case "${ARCH}" in \
+       i386) \
+         ESUM='9f415218270d153941b4bed0d6cccdc4ff27f877ecf8a5f015bd86ee8a680508'; \
+         YML_FILE='8.0/jre/linux/i386/index.yml'; \
+         ;; \
+       *) \
+         echo "Unsupported arch: ${ARCH}"; \
+         exit 1; \
+         ;; \
+    esac; \
+    BASE_URL="https://public.dhe.ibm.com/ibmdl/export/pub/systems/cloud/runtimes/java/meta/"; \
+    wget -q -U UA_IBM_JAVA_Docker -O /tmp/index.yml ${BASE_URL}/${YML_FILE}; \
+    JAVA_URL=$(sed -n '/^'${JAVA_VERSION}:'/{n;s/\s*uri:\s//p}'< /tmp/index.yml); \
+    wget -q -U UA_IBM_JAVA_Docker -O /tmp/ibm-java.tgz ${JAVA_URL}; \
+    echo "${ESUM}  /tmp/ibm-java.tgz" | sha256sum -c -; \
+    mkdir -p /opt/ibm/java; \
+    tar -xf /tmp/ibm-java.tgz -C /opt/ibm/java --strip-components=1; \
+    rm -f /tmp/index.yml; \
+    rm -f /tmp/ibm-java.tgz;
+
+ENV JAVA_HOME=/opt/ibm/java/jre \
+    PATH=/opt/ibm/java/jre/bin:$PATH \
+    IBM_JAVA_OPTIONS="-XX:+UseContainerSupport"
 
 ENV HatH_ARGS --cache-dir=/hath/data/cache --data-dir=/hath/data/data --download-dir=/hath/download --log-dir=/hath/data/log --temp-dir=/hath/data/temp
 
@@ -20,9 +52,6 @@ COPY --from=builder /hath /hath
 COPY build/start.sh /hath/start.sh
 WORKDIR /hath
 
-RUN apt-get update \
-    && apt-get install -y sqlite \
-    && rm -rf /var/lib/apt/lists/* \
-    && chmod +x /hath/start.sh
+RUN chmod +x /hath/start.sh
 
 CMD ["/hath/start.sh"]
