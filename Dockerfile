@@ -21,7 +21,7 @@ COPY build/start.sh /hath/start.sh
 WORKDIR /hath
 
 RUN apt-get update \
-    && apt-get install -y sqlite \
+    && apt-get install -y sqlite3 \
     && rm -rf /var/lib/apt/lists/* \
     && chmod +x /hath/start.sh
 

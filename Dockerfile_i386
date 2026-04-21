@@ -15,7 +15,7 @@ RUN apk --no-cache add unzip \
 FROM debian:12 AS release
 
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends wget ca-certificates sqlite\
+    && apt-get install -y --no-install-recommends wget ca-certificates sqlite3 \
     && rm -rf /var/lib/apt/lists/*
 
 ENV JAVA_VERSION 8.0.8.60
