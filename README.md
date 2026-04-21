@@ -110,3 +110,5 @@ Okay? unraid [removed Template Repositories](https://forums.unraid.net/topic/112
 2023/01/10 My DockerHub account got deleted for no reason, move image to ghcr.io  
 2023/09/16 Update to 1.6.2 & Add docker-compose to documentation  
 2024/05/16 Update to 1.6.3 & Add proxy support  
+2024/12/19 Update to 1.6.4  
+2026/04/21 Update to 1.6.5 & Modify i386 ‎Dockerfile  
