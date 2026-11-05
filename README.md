@@ -112,3 +112,4 @@ Okay? unraid [removed Template Repositories](https://forums.unraid.net/topic/112
 2024/05/16 Update to 1.6.3 & Add proxy support  
 2024/12/19 Update to 1.6.4  
 2026/04/21 Update to 1.6.5 & Modify i386 ‎Dockerfile  
+2026/11/06 Update to 1.6.6  
