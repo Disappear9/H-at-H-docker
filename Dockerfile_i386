@@ -1,7 +1,7 @@
 FROM alpine AS builder
 
-ENV HatH_VERSION=1.6.5
-ENV HatH_SHA256=a42224c24008dbf895e2d178b1fa25589715788214f7ed526d1957217aaa912e
+ENV HatH_VERSION=1.6.6
+ENV HatH_SHA256=55a47790072384cac3c218503c0296295530eeee2d5c82e52398eff5c7fbccb5
 
 RUN apk --no-cache add unzip \
     && mkdir -p /hath \
@@ -12,19 +12,19 @@ RUN apk --no-cache add unzip \
     && mkdir -p /hath/data \
     && mkdir -p /hath/download
 
-FROM debian:12 AS release
+FROM debian:13 AS release
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends wget ca-certificates sqlite3 \
     && rm -rf /var/lib/apt/lists/*
 
-ENV JAVA_VERSION=8.0.8.60
+ENV JAVA_VERSION=8.0.8.71
 
 RUN set -eux; \
     ARCH="$(dpkg --print-architecture)"; \
     case "${ARCH}" in \
        i386) \
-         ESUM='9f415218270d153941b4bed0d6cccdc4ff27f877ecf8a5f015bd86ee8a680508'; \
+         ESUM='cf1cd302f156d80f0c358e0fa0f679808a536a6ef3fc587024de143f046570c6'; \
          YML_FILE='8.0/jre/linux/i386/index.yml'; \
          ;; \
        *) \
