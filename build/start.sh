@@ -20,11 +20,11 @@ fi
 if [ $ImageProxyHost ] && [ $ImageProxyType ] && [ $ImageProxyPort ]
 	then
  		echo "Proxy arguments found! "
-   		trap 'kill_jar' TERM INT KILL
+   		trap 'kill_jar' TERM INT
 		java -jar HentaiAtHome.jar $HatH_ARGS --image-proxy-host=$ImageProxyHost --image-proxy-type=$ImageProxyType --image-proxy-port=$ImageProxyPort $HatH_ADV_ARGS &
   		wait $!
   	else
-   		trap 'kill_jar' TERM INT KILL
+   		trap 'kill_jar' TERM INT
 		java -jar HentaiAtHome.jar $HatH_ARGS $HatH_ADV_ARGS &
   		wait $!
 fi
